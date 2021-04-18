@@ -1,0 +1,1 @@
+#include <libft.h>int		ft_putendl_fd(const char *s, int fd){	int 				ret;	if (((ret = write(fd, s, ft_strlen(s) * sizeof(char))) == -1)	|| write(fd, "\n", sizeof(char)) == -1)		return (-1);	return (ret + 1);}

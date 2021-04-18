@@ -1,0 +1,1 @@
+#include <libft.h>char	*ft_strcdup2(const char *s, size_t len, char c){	const char	*end = (char *)ft_memchr(s, c, len);	if (end)		return (ft_strndup2(s, len, (size_t)end - (size_t)s));	return (ft_strdup2(s, len));}
