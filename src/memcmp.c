@@ -26,13 +26,13 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	const unsigned long	*qword_s1 = (unsigned long *)s1;
 	const unsigned long	*qword_s2 = (unsigned long *)s2;
 	unsigned char		*byte_s1;
-	unsigned char 		*byte_s2;
+	unsigned char		*byte_s2;
 
 	while (n >= sizeof(long))
 	{
 		if (*qword_s1 != *qword_s2)
 			return (_ft_memcmp((unsigned char *)qword_s1,
-				(unsigned char *)qword_s2));
+					(unsigned char *)qword_s2));
 		qword_s1++;
 		qword_s2++;
 		n -= sizeof(long);

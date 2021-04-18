@@ -9,22 +9,24 @@ static size_t	ft_strlen_basic(const char *s, const char *begin)
 
 static size_t	__ft_strlen(const unsigned char *s, const char *begin)
 {
+	const size_t	len_already = (size_t)s - (size_t)begin;
+
 	if (!s[0])
-		return ((size_t)s - (size_t)begin);
+		return (len_already);
 	if (!s[1])
-		return ((size_t)s - (size_t)begin + 1LL);
+		return (len_already + 1LL);
 	if (!s[2])
-		return ((size_t)s - (size_t)begin + 2LL);
+		return (len_already + 2LL);
 	if (!s[3])
-		return ((size_t)s - (size_t)begin + 3LL);
+		return (len_already + 3LL);
 	if (!s[4])
-		return ((size_t)s - (size_t)begin + 4LL);
+		return (len_already + 4LL);
 	if (!s[5])
-		return ((size_t)s - (size_t)begin + 5LL);
+		return (len_already + 5LL);
 	if (!s[6])
-		return ((size_t)s - (size_t)begin + 6LL);
+		return (len_already + 6LL);
 	if (!s[7])
-		return ((size_t)s - (size_t)begin + 7LL);
+		return (len_already + 7LL);
 	return (0);
 }
 
@@ -34,7 +36,7 @@ static size_t	_ft_strlen(const unsigned long *long_ptr, const char *begin)
 		return (ft_strlen_basic((char *)long_ptr, begin));
 	while (1)
 	{
-		if (((*long_ptr - LOMAGIC) & ~*long_ptr) & HIMAGIC)
+		if ((*long_ptr - LOMAGIC) & ~(*long_ptr) & HIMAGIC)
 			break ;
 		long_ptr++;
 	}

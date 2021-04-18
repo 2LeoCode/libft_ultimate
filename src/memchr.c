@@ -43,7 +43,7 @@ static void	*_ft_memchr(const unsigned long *long_ptr,
 		repeated_c |= ((repeated_c << 16) << 16);
 	if (HIMAGIC == -1)
 		return (ft_memchr_basic((unsigned char *)long_ptr, (unsigned char)c,
-			n));
+				n));
 	while (n >= sizeof(long))
 	{
 		long_word = *long_ptr ^ repeated_c;
