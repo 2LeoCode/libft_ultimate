@@ -19,6 +19,7 @@
 #  define LOMAGIC -1
 # endif
 
+# define SWAP_BUFFER_SIZE 128
 # define NULL_ENDED ((unsigned int)-1)
 
 unsigned int		ft_abs(int n);
@@ -104,6 +105,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strtrim(const char *s, const char *set);
 char				*ft_substr(const char *s, unsigned start, size_t n);
+void				ft_swap(void *a, void *b, size_t size);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 

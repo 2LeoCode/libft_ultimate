@@ -84,6 +84,7 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strstr\
 			strtrim\
 			substr\
+			swap\
 			tolower\
 			toupper)
 INC =		$(addsuffix $(word 3, $(.SUFFIXES)),\
