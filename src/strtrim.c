@@ -10,9 +10,9 @@ char	*ft_strtrim(const char *s, const char *set)
 	while (*s && ft_memchr(set, *s, set_len))
 		s++;
 	if (!*s)
-		return (ft_strdup2("", 0));
+		return (ft_memdup("", 0));
 	while ((end_ptr != s) && ft_memchr(set, *end_ptr, set_len))
 		end_ptr--;
-	trimmed = ft_strndup2(s, s_len, (size_t)end_ptr - (size_t)s + 1);
+	trimmed = ft_memndup(s, s_len, (size_t)end_ptr - (size_t)s + 1);
 	return (trimmed);
 }

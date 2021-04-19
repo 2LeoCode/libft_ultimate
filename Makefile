@@ -1,12 +1,12 @@
 SHELL =		/bin/sh
-.SUFFIXES =	.c .h .o
-
 NAME =		libft.a
 
-SRCD =		src
-INCD =		inc
-OBJD =		.obj
-LIBD =		lib
+.SUFFIXES =	.c .o .h .a
+
+SRCDIR =	src
+INCDIR =	inc
+LIBDIR =	lib
+OBJDIR =	.obj
 
 SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			abs\
@@ -34,12 +34,16 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			ltoa\
 			ltoa_u\
 			memccpy\
+			memcdup\
 			memchr\
 			memcmp\
 			memcpy\
+			memdup\
+			memfind\
+			memjoin\
 			memmove\
+			memndup\
 			mempcpy\
-			memset\
 			putchar\
 			putchar_fd\
 			putendl\
@@ -59,14 +63,11 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strcasestr\
 			strcat\
 			strcdup\
-			strcdup2\
 			strchr\
 			strcmp\
 			strcpy\
 			strdup\
-			strdup2\
 			strjoin\
-			strjoin2\
 			strlcat\
 			strlcpy\
 			strlen\
@@ -77,62 +78,61 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strncmp\
 			strncpy\
 			strndup\
-			strndup2\
 			strnlen\
 			strnstr\
 			strrchr\
 			strstr\
-			strstr2\
 			strtrim\
-			strtrim2\
 			substr\
-			substr2\
 			tolower\
 			toupper)
-INC =		$(addsuffix $(word 2, $(.SUFFIXES)),\
+INC =		$(addsuffix $(word 3, $(.SUFFIXES)),\
+			libft)
+LIB =		$(addsuffix $(word 4, $(.SUFFIXES)),\
 			)
-OBJ =		$(SRC:$(word 1, $(.SUFFIXES))=$(word 3, $(.SUFFIXES)))
-LIB =		
+OBJ =		$(SRC:$(word 1, $(.SUFFIXES))=$(word 2, $(.SUFFIXES)))
 
 CC =		gcc
-CFLAGS =	-Wall\
-			-Werror\
-			-Wextra\
-			-I $(INCD)\
-			-o3
-LIBCFLAGS =	$(addprefix -L, $(LIBD))\
-			$(addprefix -l, $(LIB))
+CFLAGS =	-Wall -Wextra -Werror -I $(INCDIR)
+LCFLAGS =	$(addprefix -L, $(LIBDIR)) $(addprefix -l, $(LIB))
 
-COUNT =		$(shell cat file.count 2>/dev/null)
+####    COLORS    ####
+KNRM =		\x1B[0m
+KRED =		\x1B[31m
+KGRN =		\x1B[32m
+KYEL =		\x1B[33m
+KBLU =		\x1B[34m
+KMAG =		\x1B[35m
+KCYN =		\x1B[36m
+KWHT =		\x1B[37m
+######################
 
-ifeq ($(COUNT),)
-all:
-	@echo $(words $(SRC)) > file.count
-	@$(MAKE) -n | grep $(CC) | wc -l | tr -d ' ' > tmp.txt
-	@rm -f file.count
-	@echo $$(($$(cat tmp.txt) - 1)) > file.count
-	@rm -f tmp.txt
-	@./make/remake.sh
-else
-all: $(NAME)
-endif
+all: $(OBJDIR) $(NAME)
+	@printf "$(KGRN)\`$(NAME)\` is up to date.\n"
 
-$(NAME): $(addprefix $(OBJD)/, $(OBJ)) | $(addprefix $(INCD)/, $(INC))
-	@rm -f file.count
-	@ar -rcs $@ $^
-	@printf "\r\033[2KCompiling [\033[32mOK\033[0m]\n"
+$(OBJDIR):
+	@printf "$(KYEL)➤ "
+	mkdir $@
+	@printf "$(KNRM)"
 
-$(OBJD):
-	@mkdir $@
+$(NAME): $(addprefix $(OBJDIR)/, $(OBJ))
+	@printf "$(KCYN)[  Linking  ]\n➤ "
+	ar rcs $@ $^
+	@printf "$(KNRM)"
 
-$(OBJD)/%$(word 3, $(.SUFFIXES)): $(SRCD)/%$(word 1, $(.SUFFIXES)) | $(OBJD)
-	@./make/prc.sh 2>/dev/null
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%$(word 2, $(.SUFFIXES)): $(SRCDIR)/%$(word 1, $(.SUFFIXES)) $(addprefix $(INCDIR)/, $(INC))
+	@printf "$(KMAG)[  Compiling  ]\n➤ "
+	$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(KNRM)"
 
 clean:
-	@rm -rf $(OBJD)
+	@printf "$(KRED)➤ "
+	rm -rf $(OBJDIR)
+	@printf "$(KNRM)"
 
 fclean: clean
-	@rm -f $(NAME)
+	@printf "$(KRED)➤ "
+	rm -f $(NAME)
+	@printf "$(KNRM)"
 
 re: fclean all

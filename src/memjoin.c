@@ -1,6 +1,6 @@
 #include <libft.h>
 
-char	*ft_strjoin2(const char *s1, const char *s2, size_t len1, size_t len2)
+void	*ft_memjoin(const void *s1, const void *s2, size_t len1, size_t len2)
 {
 	char			*s;
 	const size_t	len_tot = len1 + len2;
@@ -11,5 +11,5 @@ char	*ft_strjoin2(const char *s1, const char *s2, size_t len1, size_t len2)
 	s[len_tot] = '\0';
 	ft_memcpy(s, s1, len1);
 	ft_memcpy(s + len1, s2, len2);
-	return (s);
+	return ((void *)s);
 }

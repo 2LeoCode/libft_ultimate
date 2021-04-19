@@ -1,1 +1,0 @@
-#include <libft.h>char	*ft_strtrim2(const char *s,			const char *set,			size_t s_len,			size_t set_len){	const char		*end_ptr = s + s_len + 1;	while (*s && ft_memchr(set, *s, set_len))		s++;	while ((--end_ptr != s) && ft_memchr(set, *end_ptr, set_len))		continue ;	return (ft_strdup2(s, (size_t)end_ptr - (size_t)s));}
