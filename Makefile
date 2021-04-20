@@ -118,12 +118,14 @@ $(OBJDIR):
 
 $(NAME): $(addprefix $(OBJDIR)/, $(OBJ))
 	@printf "$(KCYN)[  Linking  ]\n➤ "
-	ar rcs $@ $^
+	ranlib $@
 	@printf "$(KNRM)"
 
 $(OBJDIR)/%$(word 2, $(.SUFFIXES)): $(SRCDIR)/%$(word 1, $(.SUFFIXES)) $(addprefix $(INCDIR)/, $(INC))
 	@printf "$(KMAG)[  Compiling  ]\n➤ "
 	$(CC) $(CFLAGS) -c $< -o $@
+	@printf "➤ "
+	ar rc $(NAME) $@
 	@printf "$(KNRM)"
 
 clean:
