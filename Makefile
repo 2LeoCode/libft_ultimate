@@ -16,9 +16,11 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			atol_u\
 			atoll\
 			atoll_u\
+			beep\
 			bzero\
 			calloc\
 			destroy_array\
+			getchar\
 			isalnum\
 			isalpha\
 			isascii\
@@ -63,10 +65,21 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strcasestr\
 			strcat\
 			strcdup\
+			strcjoin\
 			strchr\
 			strcmp\
 			strcpy\
 			strdup\
+			strerase\
+			strinsert\
+			strisalnum\
+			strisalpha\
+			strisascii\
+			strisdigit\
+			strislower\
+			strisprint\
+			strisspace\
+			strisupper\
 			strjoin\
 			strlcat\
 			strlcpy\
@@ -81,6 +94,7 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strnlen\
 			strnstr\
 			strrchr\
+			strreplace\
 			strstr\
 			strtrim\
 			substr\
