@@ -1,6 +1,6 @@
 #include <libft.h>
 
-int	ft_strerase(char **s, unsigned int i, void (*free_fun)(void *))
+int	ft_strerase(char **s, unsigned int i)
 {
 	const size_t	len = ft_strlen(*s);
 	char			*new_s;
@@ -12,8 +12,7 @@ int	ft_strerase(char **s, unsigned int i, void (*free_fun)(void *))
 		return (-1);
 	ft_memcpy(new_s, *s, i);
 	ft_stpcpy(new_s + i, *s + i + 1);
-	if (free_fun)
-		(*free_fun)(*s);
+	free(*s);
 	*s = new_s;
 	return (0);
 }
