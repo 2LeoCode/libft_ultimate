@@ -101,7 +101,8 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			substr\
 			swap\
 			tolower\
-			toupper)
+			toupper\
+			wrdlen)
 INC =		$(addsuffix $(word 3, $(.SUFFIXES)),\
 			libft)
 LIB =		$(addsuffix $(word 4, $(.SUFFIXES)),\

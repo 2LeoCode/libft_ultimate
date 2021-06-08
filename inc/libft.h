@@ -124,5 +124,6 @@ char				*ft_substr(const char *s, unsigned start, size_t n);
 void				ft_swap(void *a, void *b, size_t size);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+size_t				ft_wrdlen(const char *s);
 
 #endif
