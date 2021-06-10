@@ -10,5 +10,5 @@ char	*ft_rplchr(char *s, int before, int after)
 	if (!ptr)
 		return (NULL);
 	*ptr = after;
-	return (s);
+	return (ptr);
 }
