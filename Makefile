@@ -58,6 +58,7 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			putnbr_fd\
 			putstr\
 			putstr_fd\
+			rplchr\
 			split\
 			stpcpy\
 			stpncpy\
