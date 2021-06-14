@@ -50,7 +50,7 @@ char				*ft_ltoa(long n);
 char				*ft_ltoa_u(unsigned long n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memcdup(const void *s, size_t len, char c);
-void				*ft_memchr(const void *s, int c, size_t n);
+void				*ft_memchr(const void *b, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memdup(const void *s1, size_t len);
