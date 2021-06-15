@@ -10,6 +10,6 @@ unsigned long long	ft_atoll_u(const char *s)
 		s++;
 	n = 0ULL;
 	while (ft_isdigit(*s))
-		n = 10ULL * n + (*s - '0');
+		n = 10ULL * n + (*s++ - '0');
 	return (n);
 }
