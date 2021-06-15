@@ -115,6 +115,7 @@ char				*ft_strndup(const char *s1, size_t n);
 size_t				ft_strnlen(const char *s, size_t maxlen);
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t n);
+char				*ft_strntrim(const char *s, const char *set, size_t n);
 char				*ft_strrchr(const char *s, int c);
 int					ft_strreplace(char *s, char *before, char *after);
 int					ft_strreplace_first(char **dst_ptr, char *before,

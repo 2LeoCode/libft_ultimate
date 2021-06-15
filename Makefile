@@ -94,6 +94,7 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 			strndup\
 			strnlen\
 			strnstr\
+			strntrim\
 			strrchr\
 			strreplace\
 			strreplace_first\
