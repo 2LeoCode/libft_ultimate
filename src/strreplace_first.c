@@ -1,6 +1,7 @@
 #include <libft.h>
 
-int	ft_strreplace_first(char **dst_ptr, char *before, char *after, void (*destructor)(void *))
+int	ft_strreplace_first(char **dst_ptr, char *before, char *after,
+		void (*destructor)(void *))
 {
 	const size_t	dst_len = ft_strlen(*dst_ptr);
 	const size_t	bef_len = ft_strlen(before);
@@ -16,9 +17,10 @@ int	ft_strreplace_first(char **dst_ptr, char *before, char *after, void (*destru
 	new_s = (char *)malloc(sizeof(char) * (dst_len + aft_len - bef_len + 1));
 	if (!new_s)
 		return (-1);
-	ft_memcpy(new_s, *dst_ptr, (size_t)first_occurence - (size_t)*dst_ptr);
-	ft_memcpy(new_s + (size_t)first_occurence - (size_t)*dst_ptr, after, aft_len);
-	ft_memcpy(new_s + (size_t)first_occurence - (size_t)*dst_ptr + aft_len,
+	ft_memcpy(new_s, *dst_ptr, (size_t)first_occurence - (size_t)(*dst_ptr));
+	ft_memcpy(new_s + (size_t)first_occurence - (size_t)(*dst_ptr), after,
+		aft_len);
+	ft_memcpy(new_s + (size_t)first_occurence - (size_t)(*dst_ptr) + aft_len,
 		first_occurence + bef_len, ft_strlen(first_occurence + bef_len) + 1);
 	if (destructor)
 		(*destructor)(*dst_ptr);
